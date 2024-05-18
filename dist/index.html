@@ -16,7 +16,10 @@
       <div class="border border-blac max-w-[800px] m-auto mt-8 px-4">
         <div class="flex justify-between items-center">
           <div class="">
-            <button class="border bg-green-600 rounded text-white text-sm p-1">
+            <button
+              class="border bg-green-600 rounded text-white text-sm p-1"
+              id="open-button"
+            >
               Add Expense
             </button>
           </div>
@@ -53,7 +56,11 @@
             class="flex justify-between items-center border-b border-gray-900 h-12"
           >
             <div class="text-2xl">Add Expense</div>
-            <span class="text-2xl font-bold cursor-pointer">&times;</span>
+            <span
+              class="text-2xl font-bold cursor-pointer text-gray-500"
+              id="close-button"
+              >&times;</span
+            >
           </div>
           <form class="*:mt-4">
             <div class="">
@@ -63,7 +70,7 @@
               <input
                 type="text"
                 id="item-name"
-                class="w-full block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
@@ -74,7 +81,7 @@
               <input
                 type="text"
                 id="item-name"
-                class="w-full block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
@@ -83,16 +90,18 @@
               <input
                 type="text"
                 id="item-name"
-                class="w-full block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
             <div class="">
-              <label for="Amount" class="text-base font-light">Expense Date</label>
+              <label for="Amount" class="text-base font-light"
+                >Expense Date</label
+              >
               <input
                 type="date"
                 id="item-name"
-                class="w-full block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
