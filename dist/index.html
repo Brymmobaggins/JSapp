@@ -13,11 +13,11 @@
       </div>
     </header>
     <main>
-      <div class="border border-blac max-w-[800px] m-auto mt-8 px-4">
-        <div class="flex justify-between items-center">
+      <div class="border border-black max-w-[700px] m-auto mt-8 px-4">
+        <div class="flex justify-between">
           <div class="">
             <button
-              class="border bg-green-600 rounded text-white text-sm p-1"
+              class="border bg-green-500 hover:bg-green-400 font-sans rounded text-white text-sm p-1"
               id="open-button"
             >
               Add Expense
@@ -33,16 +33,26 @@
             </button>
           </div>
         </div>
-        <!-- <div class=""> -->
-        <table class="border w-full text-sm font-extralight text-left mt-3">
-          <th>Item Id</th>
-          <th>Item Name</th>
-          <th>Amount</th>
-          <th>Expense Date</th>
-          <th>Category</th>
-          <th>Action Item</th>
+
+        <table
+          class="border w-full max-w-[800px] mt-3 *:text-sm *:font-sans *:font-normal"
+        >
+          <!-- <thead> -->
+          <tr
+            class="text-left font-sans border border-b-2 border-alabaster-300 *:py-1 *:px-3 text-sm font-bold"
+          >
+            <th colspan="">Item Id</th>
+            <th>Item Name</th>
+            <th>Amount</th>
+            <th>Expense Date</th>
+            <th>Category</th>
+            <th>Action Item</th>
+          </tr>
+          <!-- </thead> -->
+          <tbody id="item-list" class="font-sans">
+
+          </tbody>
         </table>
-        <!-- </div> -->
       </div>
       <!-- modal -->
       <div
@@ -63,8 +73,10 @@
             >
           </div>
           <form class="*:mt-4">
+            <!-- Item Name -->
+
             <div class="">
-              <label for="item-name" class="text-base font-light"
+              <label for="item-name" class="text-sm font-sans font-normal"
                 >Item name</label
               >
               <input
@@ -74,39 +86,46 @@
                 autocomplete="off"
               />
             </div>
+            <!-- Category -->
             <div class="">
-              <label for="Category" class="text-base font-light"
+              <label for="Category" class="text-sm font-sans font-normal"
                 >Category</label
               >
               <input
                 type="text"
-                id="item-name"
+                id="item-category"
                 class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
+            <!-- item Amount -->
             <div class="">
-              <label for="Amount" class="text-base font-light">Amount</label>
+              <label for="Amount" class="text-sm font-sans font-normal"
+                >Amount</label
+              >
               <input
                 type="text"
-                id="item-name"
+                id="item-amount"
                 class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
+            <!-- Expense Date -->
             <div class="">
-              <label for="Amount" class="text-base font-light"
+              <label for="Amount" class="text-sm font-sans font-normal"
                 >Expense Date</label
               >
               <input
                 type="date"
-                id="item-name"
+                id="expense-date"
                 class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
                 autocomplete="off"
               />
             </div>
             <div class="">
-              <button class="border w-full bg-green-400 p-1.5 font-bold">
+              <button
+                class="border w-full bg-green-500 hover:bg-green-400 p-1.5 font-medium"
+              >
                 Save
               </button>
             </div>
