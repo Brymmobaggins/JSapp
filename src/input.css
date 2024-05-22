@@ -7,3 +7,6 @@
 #modal{
     display: none;
 }
+#item-list td{
+    padding: 8px;
+}

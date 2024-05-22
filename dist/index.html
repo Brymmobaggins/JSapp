@@ -34,24 +34,20 @@
           </div>
         </div>
 
-        <table
-          class="border w-full max-w-[800px] mt-3 *:text-sm *:font-sans *:font-normal"
-        >
-          <!-- <thead> -->
-          <tr
-            class="text-left font-sans border border-b-2 border-alabaster-300 *:py-1 *:px-3 text-sm font-bold"
-          >
-            <th colspan="">Item Id</th>
-            <th>Item Name</th>
-            <th>Amount</th>
-            <th>Expense Date</th>
-            <th>Category</th>
-            <th>Action Item</th>
-          </tr>
-          <!-- </thead> -->
-          <tbody id="item-list" class="font-sans">
-
-          </tbody>
+        <table class="border w-full max-w-[800px] table-auto">
+          <thead>
+            <tr
+              class="text-left font-sans border border-b-2 border-alabaster-300 *:p-2 bg-red-100 text-sm font-bold"
+            >
+              <th colspan="">Item Id</th>
+              <th>Item Name</th>
+              <th>Amount</th>
+              <th>Expense Date</th>
+              <th>Category</th>
+              <th>Action Item</th>
+            </tr>
+          </thead>
+          <tbody id="item-list" class="font-sans bg-teal-200"></tbody>
         </table>
       </div>
       <!-- modal -->
@@ -88,15 +84,20 @@
             </div>
             <!-- Category -->
             <div class="">
-              <label for="Category" class="text-sm font-sans font-normal"
+              <label for="category" class="text-sm font-sans font-normal block"
                 >Category</label
               >
-              <input
-                type="text"
-                id="item-category"
-                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
-                autocomplete="off"
-              />
+              <select
+                name="category"
+                id="category"
+                class="w-full border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-green-600 font-normal font-sans text-sm p-1.5 rounded-md"
+              >
+                <option>---select your category---</option>
+                <option value="Food">Food</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Travel">Travel</option>
+                <option value="Health">Health</option>
+              </select>
             </div>
             <!-- item Amount -->
             <div class="">
