@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-#modal{
-    display: none;
+#modal {
+  display: none;
 }
-#item-list td{
-    padding: 8px;
+#item-list td {
+  padding: 8px;
+  font-size: 15px;
+  line-height: 20px;
+}
+#item-list tr {
+  padding: 50px 0;
+  /* background-color: aqua; */
 }

@@ -7,59 +7,87 @@ const modal = document.querySelector('#modal')
 
 const itemList = document.querySelector("#item-list")
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    getvalues()
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    getExpense()
 })
 
-function getvalues() {
+
+function getExpense() {
     let itemName = document.getElementById("item-name").value.trim()
     let itemCategory = document.getElementById("category").value.trim()
     let itemAmount = document.getElementById("item-amount").value.trim()
-    let expenseDate = document.getElementById("expense-date").value.trim()
+    let itemDate = document.getElementById("expense-date").value.trim()
     console.log(itemName)
 
-    let numberList = document.getElementsByClassName("nr")
+    let numberList = document.getElementsByClassName("nr");
     for (let i = 0; i < numberList.length; i++) {
-        numberList[i].innerHTML = (i + 1) + "."
-
+        numberList[i].innerHTML = (i + 1) + ".";
     }
-    // console.log(numberList)
+    if (itemName && itemCategory && itemAmount && itemDate) {
+        const expenseList = {
+            itemName,
+            itemCategory,
+            itemAmount,
+            itemDate
+        }
+        let expenses = JSON.parse(localStorage.getItem("expenses")) || []
+        expenses.push(expenseList)
+
+        localStorage.setItem("expenses", JSON.stringify(expenses))
 
 
-    if (itemName == "" || !itemCategory || !itemAmount || !expenseDate) {
-        document.querySelector("#item-name").style.borderColor = "red"
 
+
+        const itemList = document.querySelector("#item-list")
+        const row = document.createElement("tr")
+        row.innerHTML = `   
+            <td class="nr"></td>
+               <td>${itemName}</td>
+               <td>${itemAmount}</td>
+              <td>${itemDate}</td>
+              <td>${itemCategory}</td> 
+              <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
+                  <a class="border bg-gray-400 text-sm edit">Edit</a>
+                  <a class="border bg-red-600 text-sm delete" >Delete</a>
+              </td>
+            `
+        itemList.appendChild(row)
+
+        // close Modal
+        closeModal()
+        document.querySelectorAll(".edit").forEach(el => {
+            el.addEventListener("click", function () {
+                openModal()
+            })
+        })
+        document.querySelectorAll(".delete").forEach((el) => {
+            el.addEventListener("click", function () {
+                el.parentElement.parentElement.remove();
+            });
+        })
 
 
     } else {
-        const itemList = document.querySelector("#item-list")
-        const row = document.createElement("tr")
-        row.innerHTML =
-            `  <td class="nr"></td>
-               <td>${itemName}</td>
-               <td>${itemAmount}</td>
-               <td>${expenseDate}</td>
-               <td>${itemCategory}</td> 
-               <td class="">
-                  <a class="border bg-gray-300 text-sm" id="edit-btn">Edit</a>
-                  <a class="border bg-red-500 text-sm" id="delete-btn">Delete</a>
-               </td>
-             `
-        itemList.appendChild(row)
-        closeModal()
-
 
     }
+    // reset input
+    form.reset()
 
-    clearInput()
+
 }
+// document.addEventListener("DOMContentLoaded", addExpense)
 
-function clearInput() {
-    document.getElementById("item-name").value = ""
-    document.getElementById("category").value = ""
-    document.getElementById("item-amount").value = ""
-    document.getElementById("expense-date").value = ""
+
+//  store expenses in the local storage
+function storeExpenseToLocalStorage() {
+    let expenses;
+    if (localStorage.getItem("expense") === null) {
+        expenses = [];
+    } else {
+        expenses = JSON.parse(localStorage.getItem("expense"))
+    }
 }
 
 
