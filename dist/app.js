@@ -3,94 +3,6 @@ const form = document.querySelector("form")
 const closeButton = document.querySelector('#close-button')
 const openButton = document.querySelector('#open-button')
 const modal = document.querySelector('#modal')
-// console.log(modal)
-
-const itemList = document.querySelector("#item-list")
-
-
-form.addEventListener("submit", function (event) {
-    event.preventDefault()
-    getExpense()
-})
-
-
-function getExpense() {
-    let itemName = document.getElementById("item-name").value.trim()
-    let itemCategory = document.getElementById("category").value.trim()
-    let itemAmount = document.getElementById("item-amount").value.trim()
-    let itemDate = document.getElementById("expense-date").value.trim()
-    console.log(itemName)
-
-    let numberList = document.getElementsByClassName("nr");
-    for (let i = 0; i < numberList.length; i++) {
-        numberList[i].innerHTML = (i + 1) + ".";
-    }
-    if (itemName && itemCategory && itemAmount && itemDate) {
-        const expenseList = {
-            itemName,
-            itemCategory,
-            itemAmount,
-            itemDate
-        }
-        let expenses = JSON.parse(localStorage.getItem("expenses")) || []
-        expenses.push(expenseList)
-
-        localStorage.setItem("expenses", JSON.stringify(expenses))
-
-
-
-
-        const itemList = document.querySelector("#item-list")
-        const row = document.createElement("tr")
-        row.innerHTML = `   
-            <td class="nr"></td>
-               <td>${itemName}</td>
-               <td>${itemAmount}</td>
-              <td>${itemDate}</td>
-              <td>${itemCategory}</td> 
-              <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
-                  <a class="border bg-gray-400 text-sm edit">Edit</a>
-                  <a class="border bg-red-600 text-sm delete" >Delete</a>
-              </td>
-            `
-        itemList.appendChild(row)
-
-        // close Modal
-        closeModal()
-        document.querySelectorAll(".edit").forEach(el => {
-            el.addEventListener("click", function () {
-                openModal()
-            })
-        })
-        document.querySelectorAll(".delete").forEach((el) => {
-            el.addEventListener("click", function () {
-                el.parentElement.parentElement.remove();
-            });
-        })
-
-
-    } else {
-
-    }
-    // reset input
-    form.reset()
-
-
-}
-// document.addEventListener("DOMContentLoaded", addExpense)
-
-
-//  store expenses in the local storage
-function storeExpenseToLocalStorage() {
-    let expenses;
-    if (localStorage.getItem("expense") === null) {
-        expenses = [];
-    } else {
-        expenses = JSON.parse(localStorage.getItem("expense"))
-    }
-}
-
-
 
 
 function openModal() {
@@ -104,7 +16,109 @@ closeButton.addEventListener("click", function () {
 })
 openButton.addEventListener("click", function () {
     openModal()
-
 })
 
-// function 
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    getExpense()
+})
+
+
+function getExpense() {
+    let itemName = document.getElementById("item-name").value.trim()
+    let itemCategory = document.getElementById("category").value.trim()
+    let itemAmount = document.getElementById("item-amount").value.trim()
+    let itemDate = document.getElementById("expense-date").value.trim()
+
+
+    if (itemName && itemCategory && itemAmount && itemDate) {
+        const expenseList = {
+            itemName,
+            itemCategory,
+            itemAmount,
+            itemDate
+        }
+        let expenses = JSON.parse(localStorage.getItem("expenses")) || []
+        expenses.push(expenseList)
+
+        localStorage.setItem("expenses", JSON.stringify(expenses))
+
+        // display expenses on the DOM
+        displayExpense()
+        // 
+        form.reset()
+    } else {
+        showAlert("Please fill all the fields", "success")
+    }
+}
+
+
+
+function displayExpense() {
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || []
+
+    const itemList = document.querySelector("#item-list")
+    itemList.innerHTML = ""
+    expenses.forEach((expense, index) => {
+        const row = document.createElement("tr")
+        const rowIndex = document.createElement("ol")
+        rowIndex.textContent = index + 1
+        row.innerHTML = `
+            <td>${rowIndex.innerHTML}</td>
+            <td>${expense.itemName}</td>
+           <td>${expense.itemAmount}</td>
+           <td>${expense.itemDate}</td>
+           <td>${expense.itemCategory}</td>
+          <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
+             <a class="border bg-gray-400 text-sm edit">Edit</a>
+              <a class="border bg-red-600 text-sm delete" >Delete</a>
+          </td>
+        `
+        // append row to table
+        itemList.appendChild(row, rowIndex)
+
+        // close Modal
+        closeModal()
+
+        // edit expense
+        document.querySelectorAll(".edit").forEach(el => {
+            el.addEventListener("click", function () {
+                openModal()
+            })
+        })
+        // delete expense per row
+        document.querySelectorAll(".delete").forEach((el) => {
+            el.addEventListener("click", function () {
+                el.parentElement.parentElement.remove();
+
+                // delete expense from local storage
+
+                // Get expenses from localStorage or initialize as empty array
+                const expensesData = JSON.parse(localStorage.getItem("expenses")) || [];
+
+                // Find the index of the expense to remove
+                const rowIndex = el.parentElement.parentElement.rowIndex - 1;
+
+                // Remove the expense from the array
+                expensesData.splice(rowIndex, 1);
+
+                // Save the updated expenses to localStorage
+                localStorage.setItem("expenses", JSON.stringify(expensesData));
+
+                showAlert("Expense deleted successfully", "success")
+
+            });
+        })
+    })
+}
+
+function showAlert(message, className) {
+    let divAlert = document.createElement("div")
+    divAlert.className = `border ${className}`
+    divAlert.appendChild(document.createTextNode(message))
+    const body = document.querySelector("body")
+    const main = document.querySelector("main")
+    body.insertBefore(divAlert, main)
+
+}
+document.addEventListener("DOMContentLoaded", displayExpense)
