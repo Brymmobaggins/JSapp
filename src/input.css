@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barrio&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -13,11 +13,10 @@
     @apply bg-gray-500 text-white;
   }
   .danger {
-    @apply bg-red-50 text-red-800 text-sm p-2;
+    @apply bg-red-50 text-red-800 text-sm p-2 border;
   }
   .success {
-    @apply bg-green-50 text-green-800 text-sm p-2;
-  
+    @apply bg-green-50 text-green-800 text-center text-sm p-1.5 border w-[20%] absolute top-[20%]  right-0 m-auto rounded-md;
   }
 }
 #modal {
@@ -31,4 +30,3 @@
 #item-list tr {
   /* padding: 50px 0; */
 }
-

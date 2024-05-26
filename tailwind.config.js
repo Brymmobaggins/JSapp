@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./dist/**/*.{html,js}"],
   theme: {
+    fontFamily: {
+      "barrio": ["barrio", 'system-ui']
+    },
     extend: {
       keyframes: {
         heartbeat: {
@@ -14,11 +17,10 @@ module.exports = {
         },
       },
       animation: {
-        heartbeat: 'heartbeat 0.5s linear',
+        heartbeat: 'heartbeat 0.2s linear',
       },
     },
   },
-  fontFamily: {
-  },
+
   plugins: [],
 }

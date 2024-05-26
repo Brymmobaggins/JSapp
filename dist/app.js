@@ -121,7 +121,7 @@ function displayExpense() {
 
 function showAlert(message, className) {
     let divAlert = document.createElement("div")
-    divAlert.className = `w-1/8 m-auto alert ${className}`
+    divAlert.className = `alert ${className}`
     divAlert.appendChild(document.createTextNode(message))
     const body = document.querySelector("body")
     const main = document.querySelector("main")
@@ -130,7 +130,7 @@ function showAlert(message, className) {
     // vanish in 2 seconds
     setTimeout(function () {
         document.querySelector(".alert").remove()
-    }, 2000)
+    }, 1000)
 
 
 }
