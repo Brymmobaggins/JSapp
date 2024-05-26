@@ -23,6 +23,11 @@ form.addEventListener("submit", function (event) {
     getExpense()
 })
 
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none"
+    }
+}
 
 function getExpense() {
     let itemName = document.getElementById("item-name").value.trim()
@@ -48,7 +53,9 @@ function getExpense() {
         // 
         form.reset()
     } else {
-        showAlert("Please fill all the fields", "success")
+        const modalParent = document.querySelector('#modal-parent')
+        modalParent.classList.toggle('animate-heartbeat')
+
     }
 }
 
@@ -114,11 +121,17 @@ function displayExpense() {
 
 function showAlert(message, className) {
     let divAlert = document.createElement("div")
-    divAlert.className = `border ${className}`
+    divAlert.className = `w-1/8 m-auto alert ${className}`
     divAlert.appendChild(document.createTextNode(message))
     const body = document.querySelector("body")
     const main = document.querySelector("main")
     body.insertBefore(divAlert, main)
+
+    // vanish in 2 seconds
+    setTimeout(function () {
+        document.querySelector(".alert").remove()
+    }, 2000)
+
 
 }
 document.addEventListener("DOMContentLoaded", displayExpense)

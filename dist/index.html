@@ -8,9 +8,15 @@
   </head>
   <body>
     <header class="bg-black">
-      <div class="bg-black text-white p-3 max-w-[1100px] m-auto">
-        <h1 class="text-2xl font-mono">SpendWise</h1>
-      </div>
+      <nav class="flex justify-between text-white w-full ">
+        <div class="p-3">
+          <h1 class="text-2xl font-mono">SpendWise</h1>
+        </div>
+        <div class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-sm *:font-sans *:hover:opacity-100 hover:cursor-pointer">
+          <span class="bg-gray-50 hover:bg-gray-100 text-black mr-1">Log in</span>
+          <span>Sign in</span>
+        </div>
+      </nav>
     </header>
 
     <!-- <div class="border alert-success">
@@ -61,8 +67,9 @@
         class="fixed w-full h-full overflow-auto left-0 bottom-0 top-0 z-10 bg-[#000000b3] pt-[100px]"
         id="modal"
       >
+      <!-- modal -->
         <div
-          class="w-full max-w-[550px] m-auto border border-white rounded p-3 bg-white"
+          class="w-full max-w-[550px] m-auto border border-white rounded p-3 bg-white" id="modal-parent"
         >
           <div
             class="flex justify-between items-center border-b border-gray-900 h-12"
@@ -74,69 +81,73 @@
               >&times;</span
             >
           </div>
-          <form class="*:mt-4">
-            <!-- Item Name -->
+     <!-- modal form -->
+            <form class="*:mt-4">
+              <!-- Item Name -->
 
-            <div class="">
-              <label for="item-name" class="text-sm font-sans font-normal"
-                >Item name</label
-              >
-              <input
-                type="text"
-                id="item-name"
-                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
-                autocomplete="off"
-              />
-            </div>
-            <!-- Category -->
-            <div class="">
-              <label for="category" class="text-sm font-sans font-normal block"
-                >Category</label
-              >
-              <select
-                name="category"
-                id="category"
-                class="w-full border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-green-600 font-normal font-sans text-sm p-1.5 rounded-md"
-              >
-                <option>---select your category---</option>
-                <option value="Food">Food</option>
-                <option value="Shopping">Shopping</option>
-                <option value="Travel">Travel</option>
-                <option value="Health">Health</option>
-              </select>
-            </div>
-            <!-- item Amount -->
-            <div class="">
-              <label for="Amount" class="text-sm font-sans font-normal"
-                >Amount</label
-              >
-              <input
-                type="text"
-                id="item-amount"
-                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
-                autocomplete="off"
-              />
-            </div>
-            <!-- Expense Date -->
-            <div class="">
-              <label for="Amount" class="text-sm font-sans font-normal"
-                >Expense Date</label
-              >
-              <input
-                type="date"
-                id="expense-date"
-                class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
-                autocomplete="off"
-              />
-            </div>
-            <div class="">
-              <button
-                class="border w-full bg-green-500 hover:bg-green-400 p-1.5 font-medium"
-              >
-                Save
-              </button>
-            </div>
-          </form>
+              <div class="">
+                <label for="item-name" class="text-sm font-sans font-normal"
+                  >Item name</label
+                >
+                <input
+                  type="text"
+                  id="item-name"
+                  class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                  autocomplete="off"
+                />
+              </div>
+              <!-- Category -->
+              <div class="">
+                <label
+                  for="category"
+                  class="text-sm font-sans font-normal block"
+                  >Category</label
+                >
+                <select
+                  name="category"
+                  id="category"
+                  class="w-full border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-green-600 font-normal font-sans text-sm p-1.5 rounded-md"
+                >
+                  <option>---select your category---</option>
+                  <option value="Food">Food</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Travel">Travel</option>
+                  <option value="Health">Health</option>
+                </select>
+              </div>
+              <!-- item Amount -->
+              <div class="">
+                <label for="Amount" class="text-sm font-sans font-normal"
+                  >Amount</label
+                >
+                <input
+                  type="text"
+                  id="item-amount"
+                  class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                  autocomplete="off"
+                />
+              </div>
+              <!-- Expense Date -->
+              <div class="">
+                <label for="Amount" class="text-sm font-sans font-normal"
+                  >Expense Date</label
+                >
+                <input
+                  type="date"
+                  id="expense-date"
+                  class="w-full text-sm block border-0 text-gray-900 p-1.5 rounded-md ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-green-600 outline-none"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="">
+                <button
+                  class="border w-full bg-green-500 hover:bg-green-400 p-1.5 font-medium"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </main>
