@@ -2,6 +2,12 @@
 module.exports = {
   content: ["./dist/**/*.{html,js}"],
   theme: {
+    screen: {
+      
+      '2xl': '1536px',
+      '3xl': '1792px',
+      '4xl': '2048px',
+    },
     fontFamily: {
       "barrio": ["barrio", 'system-ui']
     },

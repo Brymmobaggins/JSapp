@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="bg-slate-500 h-16">
+    <header class="bg-slate-500 h-16 w-full">
       <nav class="flex justify-between text-white w-full size-12">
         <div class="p-3 flex items-center">
           <svg
@@ -24,10 +24,12 @@
             />
           </svg>
 
-          <span class="text-base font-bold font-barrio"> SpendWise</span>
+          <span class="text-lg font-bold font-barrio text-yellow-400">
+            SpendWise</span
+          >
         </div>
         <div
-          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-sm *:font-sans *:hover:opacity-100 hover:cursor-pointer"
+          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-xs *:font-sans *:hover:opacity-100 hover:cursor-pointer"
         >
           <span class="bg-gray-50 hover:bg-gray-100 text-black mr-1"
             >Log in</span
@@ -50,24 +52,29 @@
             >
               Add Expense
             </button>
-          </div>
-          <div class="">
-            <input
-              type="search"
-              class="border border-black p-1.5 outline-none rounded focus:border-blue-400 text-sm"
-            />
             <button
-              class="border bg-blue-500 hover:bg-blue-400 rounded text-sm p-1.5 text-white"
+              class="border bg-blue-600 hover:bg-blue-500 font-sans rounded text-white text-sm p-1.5"
+              id="open-button"
             >
-              Filter
+              Expense report
             </button>
+          </div>
+          <div class="flex justify-between items-center gap-1">
+            <input
+              class="block w-full border border-black p-1.5 outline-none rounded focus:border-blue-400 text-sm placeholder:italic placeholder:text-slate-400"
+              id="search"
+              placeholder="Search by description or category"
+              type="text"
+              name="search"
+            />
+            
           </div>
         </div>
 
         <table class="border w-full max-w-[650px] table-auto mt-3">
           <thead>
             <tr
-              class="text-left font-sans border border-b-2 border-alabaster-300 *:p-2 bg-gray-100 text-sm font-normal hidden"
+              class="text-left font-sans border border-b-2 border-alabaster-300 *:p-2 bg-gray-100 text-sm font-normal"
             >
               <th>Item Id</th>
               <th>Item Name</th>

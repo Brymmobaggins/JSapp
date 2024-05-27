@@ -16,7 +16,7 @@
     @apply bg-red-50 text-red-800 text-sm p-2 border;
   }
   .success {
-    @apply bg-green-50 text-green-800 text-center text-sm p-1.5 border w-[20%] absolute top-[20%]  right-0 m-auto rounded-md;
+    @apply bg-green-50 text-green-800 text-center sm:text-xs text-sm p-1.5 border w-[15%] absolute top-[20%] right-0 m-auto rounded-md;
   }
 }
 #modal {
@@ -24,8 +24,8 @@
 }
 #item-list td {
   padding: 8px;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 16px;
 }
 #item-list tr {
   /* padding: 50px 0; */

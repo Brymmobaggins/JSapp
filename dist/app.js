@@ -18,23 +18,30 @@ openButton.addEventListener("click", function () {
     openModal()
 })
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault()
-    getExpense()
-})
-
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none"
     }
 }
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    addExpense()
+})
 
-function getExpense() {
+document.addEventListener("DOMContentLoaded", () => {
+    displayExpenses()
+    document.getElementById('search').addEventListener('input', searchExpenses)
+})
+
+
+function addExpense() {
     let itemName = document.getElementById("item-name").value.trim()
     let itemCategory = document.getElementById("category").value.trim()
     let itemAmount = document.getElementById("item-amount").value.trim()
     let itemDate = document.getElementById("expense-date").value.trim()
-
+    
+    // convert string a floating point number
+    itemAmount = parseFloat(itemAmount)
 
     if (itemName && itemCategory && itemAmount && itemDate) {
         const expenseList = {
@@ -49,19 +56,26 @@ function getExpense() {
         localStorage.setItem("expenses", JSON.stringify(expenses))
 
         // display expenses on the DOM
-        displayExpense()
-        // 
+        displayExpenses()
+
+        // clear form input
         form.reset()
     } else {
         const modalParent = document.querySelector('#modal-parent')
+
         modalParent.classList.toggle('animate-heartbeat')
+
+        // animation disappears after 1 second
+        setTimeout(() => {
+            modalParent.classList.toggle('animate-heartbeat')
+        }, 1000)
 
     }
 }
 
 
 
-function displayExpense() {
+function displayExpenses() {
     const expenses = JSON.parse(localStorage.getItem("expenses")) || []
 
     const itemList = document.querySelector("#item-list")
@@ -77,8 +91,8 @@ function displayExpense() {
            <td>${expense.itemDate}</td>
            <td>${expense.itemCategory}</td>
           <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
-             <a class="border bg-gray-400 text-sm edit">Edit</a>
-              <a class="border bg-red-600 text-sm delete" >Delete</a>
+             <a class="border bg-gray-400 text-xs edit">Edit</a>
+              <a class="border bg-red-600 text-xs delete" >Delete</a>
           </td>
         `
         // append row to table
@@ -112,10 +126,58 @@ function displayExpense() {
                 // Save the updated expenses to localStorage
                 localStorage.setItem("expenses", JSON.stringify(expensesData));
 
+                // alert("Do you want to delete this expense?")
+
                 showAlert("Expense deleted successfully", "success")
 
             });
         })
+    })
+}
+
+// function showAlert(message, type) {
+//     const alert = document.querySelector(".alert")
+//     alert.textContent = message
+//     alert.classList.remove("hidden")
+//     alert.classList.add(`alert-${type}`)
+//     setTimeout(() => {
+//         alert.classList.remove(`alert-${type}`)
+//         setTimeout(() => {
+//             alert.classList.add("hidden")
+//         }, 1000)
+//     }, 3000)
+//     if (type === "error") {
+//         alert.classList.add("alert-error")
+//     } else if (type === "success") {
+//         alert.classList.add("alert-success")
+//     }
+// }
+
+function searchExpenses() {
+    const searchInput = document.getElementById('search').value.trim()
+    const searchValue = searchInput.toLowerCase()
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || []
+    const itemList = document.querySelector("#item-list")
+    itemList.innerHTML = ""
+    expenses.forEach((expense, index) => {
+        if (expense.itemName.toLowerCase().includes(searchValue) || expense.itemCategory.toLowerCase().includes(searchValue)) {
+            const row = document.createElement("tr")
+            const rowIndex = document.createElement("ol")
+            rowIndex.textContent = index + 1
+            row.innerHTML = `
+                <td>${rowIndex.innerHTML}</td>
+                <td>${expense.itemName}</td>
+               <td>${expense.itemAmount}</td>
+               <td>${expense.itemDate}</td>
+               <td>${expense.itemCategory}</td>
+              <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
+                 <a class="border bg-gray-400 text-xs edit">Edit</a>
+                  <a class="border bg-red-600 text-xs delete" >Delete</a>
+              </td>
+            `
+            // append row to table
+            itemList.appendChild(row, rowIndex)
+        }
     })
 }
 
@@ -134,4 +196,3 @@ function showAlert(message, className) {
 
 
 }
-document.addEventListener("DOMContentLoaded", displayExpense)
