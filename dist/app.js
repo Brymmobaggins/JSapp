@@ -39,7 +39,7 @@ function addExpense() {
     let itemCategory = document.getElementById("category").value.trim()
     let itemAmount = document.getElementById("item-amount").value.trim()
     let itemDate = document.getElementById("expense-date").value.trim()
-    
+
     // convert string a floating point number
     itemAmount = parseFloat(itemAmount)
 
@@ -90,9 +90,9 @@ function displayExpenses() {
            <td>${expense.itemAmount}</td>
            <td>${expense.itemDate}</td>
            <td>${expense.itemCategory}</td>
-          <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
-             <a class="border bg-gray-400 text-xs edit">Edit</a>
-              <a class="border bg-red-600 text-xs delete" >Delete</a>
+          <td class="flex gap-1 *:px-1.5 *:py-1 *:rounded-md *:outline-none *:cursor-pointer *:text-white">
+            <a class="border border-gray-400 bg-gray-400 hover:bg-gray-300 text-xs edit">Edit</a>
+            <a class="border border-red-600 bg-red-600 hover:bg-red-500 text-xs delete">Delete</a>
           </td>
         `
         // append row to table
@@ -126,7 +126,6 @@ function displayExpenses() {
                 // Save the updated expenses to localStorage
                 localStorage.setItem("expenses", JSON.stringify(expensesData));
 
-                // alert("Do you want to delete this expense?")
 
                 showAlert("Expense deleted successfully", "success")
 
@@ -170,9 +169,9 @@ function searchExpenses() {
                <td>${expense.itemAmount}</td>
                <td>${expense.itemDate}</td>
                <td>${expense.itemCategory}</td>
-              <td class="*:px-1.5 *:py-1 *:rounded *:outline-none *:cursor-pointer *:text-white">
+              <td class="*:px-1.5 *:py-1 *:rounded-md *:outline-none *:cursor-pointer *:text-white">
                  <a class="border bg-gray-400 text-xs edit">Edit</a>
-                  <a class="border bg-red-600 text-xs delete" >Delete</a>
+                  <a class="border bg-red-600 text-xs delete">Delete</a>
               </td>
             `
             // append row to table

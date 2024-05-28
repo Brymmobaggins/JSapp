@@ -6,7 +6,7 @@
     <title>SpendWise</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="m-5">
     <header class="bg-slate-500 h-16 w-full">
       <nav class="flex justify-between text-white w-full size-12">
         <div class="p-3 flex items-center">
@@ -29,9 +29,10 @@
           >
         </div>
         <div
-          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-xs *:font-sans *:hover:opacity-100 hover:cursor-pointer"
+          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-sm *:font-sans *:hover:opacity-100 hover:cursor-pointer"
         >
-          <span class="bg-gray-50 hover:bg-gray-100 text-black mr-1"
+          <span
+            class="bg-gray-50 border-gray-50 hover:bg-gray-100 text-black mr-1"
             >Log in</span
           >
           <span>Sign in</span>
@@ -42,18 +43,18 @@
     <!-- <div class="border alert-success">
       <p>Item deleted</p>
     </div> -->
-    <main>
+    <main class="bg-[#fff]">
       <div class="max-w-[650px] m-auto mt-8 px-4">
         <div class="flex justify-between">
           <div class="">
             <button
-              class="border bg-green-600 hover:bg-green-500 font-sans rounded text-white text-sm p-1.5"
+              class="border bg-green-600 border-green-600 hover:bg-green-500 font-sans rounded-md text-white text-sm p-1.5"
               id="open-button"
             >
               Add Expense
             </button>
             <button
-              class="border bg-blue-600 hover:bg-blue-500 font-sans rounded text-white text-sm p-1.5"
+              class="border bg-[#1a75cf] hover:bg-blue-500 border-[#1a75cf] font-sans rounded-md text-white text-sm p-1.5"
               id="open-button"
             >
               Expense report
@@ -67,25 +68,28 @@
               type="text"
               name="search"
             />
-            
           </div>
         </div>
-
-        <table class="border w-full max-w-[650px] table-auto mt-3">
-          <thead>
-            <tr
-              class="text-left font-sans border border-b-2 border-alabaster-300 *:p-2 bg-gray-100 text-sm font-normal"
-            >
-              <th>Item Id</th>
-              <th>Item Name</th>
-              <th>Amount</th>
-              <th>Expense Date</th>
-              <th>Category</th>
-              <th>Action Item</th>
-            </tr>
-          </thead>
-          <tbody id="item-list" class="font-sans"></tbody>
-        </table>
+        <div class="w-full max-w-[650px] border bg-[#f6f6f6] mt-2">
+          <table class="border max-w-[550px]">
+            <thead>
+              <tr
+                class="text-left font-sans border *:py-2 *:px-1 *:m-2 text-[14px] font-extralight"
+              >
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Amount</th>
+                <th>Expense Date</th>
+                <th>Category</th>
+                <th>Action Item</th>
+              </tr>
+            </thead>
+            <tbody id="item-list" class="font-sans bg-gray-50"></tbody>
+          </table>
+          <div class="mt-2 text-right text-sm p-1.5">
+            Total Expenses: $<span id="total-expenses">0.00</span>
+          </div>
+        </div>
       </div>
       <!-- modal -->
       <div
