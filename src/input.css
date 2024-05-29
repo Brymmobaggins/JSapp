@@ -5,10 +5,12 @@
 @tailwind utilities;
 
 @layer components {
+  body {
+    @apply bg-gray-100 text-gray-800 m-5;
+  }
   .btn-primary {
     @apply bg-blue-500 text-white;
   }
-
   .btn-secondary {
     @apply bg-gray-500 text-white;
   }
@@ -18,14 +20,13 @@
   .success {
     @apply bg-green-50 text-green-800 text-center sm:text-xs text-sm p-1.5 border w-[15%] absolute top-[20%] right-0 m-auto rounded-md;
   }
-  #modal{
-    @apply hidden
+  #modal {
+    @apply hidden;
   }
-  #item-list td{
-    @apply text-sm py-2
+  #item-list td {
+    @apply text-sm py-2 px-1.5;
   }
-  #item-list tr{
-    @apply px-2 bg-white
+  #item-list tr {
+    @apply bg-[#fdfdfd] border-b border-gray-200 shadow;
   }
 }
-

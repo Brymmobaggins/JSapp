@@ -23,6 +23,11 @@ window.onclick = function (event) {
         modal.style.display = "none"
     }
 }
+// const login = document.getElementById('log-in')
+
+// login.addEventListener("click", function () {
+//     window.location.href = "login.html"
+// })
 form.addEventListener("submit", function (event) {
     event.preventDefault()
     addExpense()
