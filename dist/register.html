@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,7 +36,7 @@
             id="log-in"
             ><a href="/dist/login.html">Log in</a></span
           >
-          <span>Sign in</span>
+          <span>Sign Up</span>
         </div>
       </nav>
     </header>
@@ -44,34 +44,54 @@
       <div
         class="border border-gray-500 rounded-md container w-full max-w-[300px] mx-auto p-1 mt-8"
       >
-        <div class="p-2 text-lg font-bold">Login here</div>
-        <form class="*:mt-1">
-          <div class="">
-            <label class="block" for="email">
+        <div class="p-2 text-lg font-bold">Register here</div>
+        <form>
+          <div class="*:mt-1">
+            <label for="username" class="block">
+              <span class="block text-sm font-medium text-slate-700"
+                >Username</span
+              >
+              <input
+                type="text"
+                class="w-full font-mono text-sm p-2 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
+                placeholder=""
+              />
+            </label>
+
+            <label for="E-mail" class="block">
               <span class="block text-sm font-medium text-slate-700"
                 >E-mail</span
               >
               <input
                 type="email"
-                class="w-full font-mono text-sm p-1.5 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
-                placeholder=""
+                class="w-full font-mono text-sm p-2 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
               />
             </label>
 
-            <label class="block" for="password">
+            <label for="password" class="block">
               <span class="block text-sm font-medium text-slate-700"
                 >Password</span
               >
               <input
                 type="password"
-                class="w-full font-mono text-sm p-1.5 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
-                placeholder=""
+                class="w-full font-mono text-sm p-2 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
               />
             </label>
+
+            <label for="password" class="block">
+              <span class="block text-sm font-medium text-slate-700"
+                >Confirm Password</span
+              >
+              <input
+                type="password"
+                class="w-full font-mono text-sm p-2 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
+              />
+            </label>
+
             <button
-              class="border bg-green-500 outline-none w-full text-white font-700 p-1 rounded mt-2"
+              class="border bg-green-500 outline-none w-full text-white font-semibold p-1 rounded"
             >
-              Log in
+              Create an account
             </button>
           </div>
         </form>
