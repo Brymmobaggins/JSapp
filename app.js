@@ -1,6 +1,7 @@
 // import express from module
 const express = require("express")
 const path = require("path")
+const hbs = require("hbs")
 
 // import mySQL from module
 const mySql = require("mysql");
@@ -19,12 +20,6 @@ const DB = mySql.createConnection({
     port: process.env.DATABASE_PORT
 });
 
-const publicDirectory = path.join(__dirname, "./dist")
-app.use(express.static(publicDirectory))
-
-// console.log(__dirname)
-app.set('view engine', 'hbs')
-
 DB.connect((error) => {
     if (error) {
         console.log(error)
@@ -32,12 +27,26 @@ DB.connect((error) => {
         console.log("MYSQL connected....")
     }
 })
+const publicDirectory = path.join(__dirname, "./dist")
+app.use(express.static(publicDirectory))
 
+// console.log(__dirname)
+app.set('view engine', 'hbs')
+
+// render home page
 app.get("/", (req, res) => {
-    res.render("login")
+    res.render("index")
+})
+// render register page
+app.get("/register", (req, res) => {
+    res.render("register")
 
 })
+// render login page
+app.get("/login", (req, res) => {
+    res.render("login")
+})
 
-app.listen(5001, () => {
-    console.log("Server started on 5001")
+app.listen(5000, () => {
+    console.log("Server started on 5000")
 })
