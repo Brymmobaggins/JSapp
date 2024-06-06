@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="bg-slate-500 h-16 w-full">
+      <nav class="flex justify-between text-white w-full size-12">
+        <div class="p-3 flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-10 stroke-1 stroke-gray-500"
+          >
+            <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
+            <path
+              fill-rule="evenodd"
+              d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <span class="text-lg font-bold font-barrio text-yellow-400"
+            ><a href="/dist/index.html">SpendWise</a>
+          </span>
+        </div>
+        <div
+          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-sm *:font-sans *:hover:opacity-100 hover:cursor-pointer"
+        >
+          <span
+            class="bg-gray-50 border-gray-50 hover:bg-gray-100 shadow-md text-black mr-1"
+            id="log-in"
+            ><a href="/dist/login.html">Home</a></span
+          >
+          <span>Log in</span>
+          <span>Register</span>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div
+        class="border border-gray-500 rounded-md container w-full max-w-[300px] mx-auto p-1 mt-8"
+      >
+        <div class="text-xl font-bold">Login here</div>
+        <form class=" ">
+          <div class="*:mt-1">
+            <label class="block" for="email">
+              <span class="block text-sm font-medium text-slate-700"
+                >E-mail</span
+              >
+              <input
+                type="email"
+                class="w-full font-mono text-sm p-1.5 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
+                placeholder=""
+              />
+            </label>
+
+            <label class="block" for="password">
+              <span class="block text-sm font-medium text-slate-700"
+                >Password</span
+              >
+              <input
+                type="password"
+                class="w-full font-mono text-sm p-1.5 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded"
+                placeholder=""
+              />
+            </label>
+            <button
+              class="border bg-green-500 outline-none w-full text-white font-500 p-1 rounded mt-2"
+            >
+              Log in
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
