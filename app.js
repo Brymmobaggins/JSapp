@@ -27,11 +27,11 @@ DB.connect((error) => {
         console.log("MYSQL connected....")
     }
 })
-const publicDirectory = path.join(__dirname, "./dist")
+const publicDirectory = path.join(__dirname, "dist")
 app.use(express.static(publicDirectory))
 
-// console.log(__dirname)
 app.set('view engine', 'hbs')
+
 
 // render home page
 app.get("/", (req, res) => {
@@ -42,11 +42,9 @@ app.get("/register", (req, res) => {
     res.render("register")
 
 })
-// render login page
-app.get("/login", (req, res) => {
-    res.render("login")
-})
 
+
+// app listen to server on port 5000
 app.listen(5000, () => {
     console.log("Server started on 5000")
 })
