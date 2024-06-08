@@ -13,11 +13,10 @@ const DB = mySql.createConnection({
 
 exports.register = (req, res) => {
     console.log(req.body)
-
     // destructuring
-    const { name, email, password, confirmPassword } = req.body
+    const { name, email, password, passwordConfirm } = req.body
 
-    DB.query("SELECT email FROM user WHERE email = ?", [email], async (error, results) => {
+    DB.query("SELECT email FROM users WHERE email = ?", [email], async (error, results) => {
         if (error) {
             console.log(error)
         }
@@ -25,16 +24,14 @@ exports.register = (req, res) => {
             return res.render("register", {
                 message: "email is already in use"
             })
-        } else if (password !== confirmPassword) {
+        } else if (password != passwordConfirm) {
             return res.render("register", {
                 message: "Password do not match"
             })
-
         }
         let hashedPassword = await bcrypt.hash(password, 8)
         console.log(hashedPassword)
-
     })
+    res.send("successful")
 
-    // res.send("form submitted")
 }
