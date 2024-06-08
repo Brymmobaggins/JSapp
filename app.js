@@ -2,6 +2,7 @@
 const express = require("express")
 const path = require("path")
 const hbs = require("hbs")
+// const pagesRouter = require('./routes/pages');
 
 // import mySQL from module
 const mySql = require("mysql");
@@ -27,24 +28,25 @@ DB.connect((error) => {
         console.log("MYSQL connected....")
     }
 })
-const publicDirectory = path.join(__dirname, "dist")
+// Serve static files from the "dist" directory
+const publicDirectory = path.join(__dirname, "./dist")
 app.use(express.static(publicDirectory))
 
+
+app.use(express.urlencoded({ extended: false }))
+
+// parse JSON boides as sent to API clients
+app.use(express.json())
+
+// Set the view engine to hbs
 app.set('view engine', 'hbs')
 
 
-// render home page
-app.get("/", (req, res) => {
-    res.render("index")
-})
-// render register page
-app.get("/register", (req, res) => {
-    res.render("register")
+app.use("/", require("./routes/pages"));
 
-})
-
+app.use("/auth", require("./routes/auth"))
 
 // app listen to server on port 5000
 app.listen(5000, () => {
-    console.log("Server started on 5000")
+    console.log("Server started on port 5000")
 })

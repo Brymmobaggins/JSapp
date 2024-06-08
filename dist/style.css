@@ -598,6 +598,17 @@ body{
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
+.danger{
+  border-width: 1px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+}
+
 .success{
   position: absolute;
   top: 20%;
