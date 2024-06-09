@@ -40,9 +40,7 @@
         </div>
       </nav>
     </header>
-      {{#if message}}
-       <div class="danger">{{message}}</div>
-      {{/if}}
+    
     <main>
       <div
         class="border border-gray-500 rounded-md container w-full max-w-[300px] mx-auto p-1 mt-8"
@@ -90,13 +88,15 @@
                 class="w-full font-mono text-sm p-2 border outline-none focus:ring-inset ring-1 ring-inset ring-gray-300 focus:ring-gray-600 rounded" id="passwordConfirm" name="passwordConfirm"
               />
             </label>
-
             <button
               class="border bg-green-500 outline-none w-full text-white font-semibold p-1 rounded"
             >
               Create an account
             </button>
           </div>
+          {{#if message}}
+                   <div class="danger">{{message}}</div>
+            {{/if}}
         </form>
         
       </div>
