@@ -45,6 +45,10 @@
       <div
         class="border border-gray-500 rounded-md container w-full max-w-[300px] mx-auto p-1 mt-8"
       >
+           {{!-- handle bars if else condition --}}
+       {{#if message}}
+                   <div class="danger">{{message}}</div>
+            {{/if}}
         <div class="p-2 text-lg font-bold">Register here</div>
         <form action="/auth/register" method="POST">
           <div class="*:mt-1">
@@ -94,12 +98,11 @@
               Create an account
             </button>
           </div>
-          {{#if message}}
-                   <div class="danger">{{message}}</div>
-            {{/if}}
         </form>
         
       </div>
     </main>
+
+    {{!-- <script src="/dist/script.js"></script>    --}}
   </body>
 </html>
