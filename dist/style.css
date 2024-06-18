@@ -609,7 +609,7 @@ body{
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
-.success{
+.delete-expense{
   position: absolute;
   top: 20%;
   right: 0px;
@@ -628,7 +628,7 @@ body{
 }
 
 @media (min-width: 640px){
-  .success{
+  .delete-expense{
     font-size: 0.75rem;
     line-height: 1rem;
   }
@@ -713,10 +713,6 @@ body{
 
 .table{
   display: table;
-}
-
-.hidden{
-  display: none;
 }
 
 .size-10{

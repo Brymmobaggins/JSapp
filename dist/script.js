@@ -1,4 +1,3 @@
-
 const form = document.querySelector("form")
 const closeButton = document.querySelector('#close-button')
 const openButton = document.querySelector('#open-button')
@@ -81,81 +80,74 @@ function addExpense() {
 
 
 function displayExpenses() {
-    const expenses = JSON.parse(localStorage.getItem("expenses")) || []
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
-    const itemList = document.querySelector("#item-list")
-    itemList.innerHTML = ""
+    const itemList = document.querySelector("#item-list");
+    itemList.innerHTML = "";
+
     expenses.forEach((expense, index) => {
-        const row = document.createElement("tr")
-        const rowIndex = document.createElement("ol")
-        rowIndex.textContent = index + 1
+        const row = document.createElement("tr");
+
         row.innerHTML = `
-            <td>${rowIndex.innerHTML}</td>
+            <td>${index + 1}</td>
             <td>${expense.itemName}</td>
-           <td>${expense.itemAmount}</td>
-           <td>${expense.itemDate}</td>
-           <td>${expense.itemCategory}</td>
-          <td class="flex gap-1 *:px-1.5 *:py-1 *:rounded-md *:outline-none *:cursor-pointer *:text-white">
-            <a class="border border-gray-400 bg-gray-400 hover:bg-gray-300 text-xs edit">Edit</a>
-            <a class="border border-red-600 bg-red-600 hover:bg-red-500 text-xs delete">Delete</a>
-          </td>
-        `
-        // append row to table
-        itemList.appendChild(row, rowIndex)
+            <td>${expense.itemAmount}</td>
+            <td>${expense.itemDate}</td>
+            <td>${expense.itemCategory}</td>
+            <td class="flex gap-1 *:px-1.5 *:py-1 *:rounded-md *:outline-none *:cursor-pointer *:text-white">
+                <a class="border border-gray-400 bg-gray-400 hover:bg-gray-300 text-xs edit">Edit</a>
+                <a class="border border-red-600 bg-red-600 hover:bg-red-500 text-xs delete">Delete</a>
+            </td>
+        `;
 
-        // close Modal
-        closeModal()
+        // Append row to table
+        itemList.appendChild(row);
 
-        // edit expense
-        document.querySelectorAll(".edit").forEach(el => {
-            el.addEventListener("click", function () {
-                openModal()
-            })
-        })
-        // delete expense per row
-        document.querySelectorAll(".delete").forEach((el) => {
-            el.addEventListener("click", function () {
-                el.parentElement.parentElement.remove();
+        // Close Modal (assuming closeModal function exists)
+        closeModal();
+    });
 
-                // delete expense from local storage
+    // Edit expense
+    document.querySelectorAll(".edit").forEach(el => {
+        el.addEventListener("click", function () {
+            openModal(); // Assuming openModa
+        });
+    });
 
-                // Get expenses from localStorage or initialize as empty array
-                const expensesData = JSON.parse(localStorage.getItem("expenses")) || [];
+    // Delete expense per row
+    document.querySelectorAll(".delete").forEach((el) => {
+        el.addEventListener("click", function () {
+            const rowIndex = el.parentElement.parentElement.rowIndex - 1;
+            el.parentElement.parentElement.remove();
 
-                // Find the index of the expense to remove
-                const rowIndex = el.parentElement.parentElement.rowIndex - 1;
+            // Delete expense from local storage
+            const expensesData = JSON.parse(localStorage.getItem("expenses")) || [];
+            expensesData.splice(rowIndex, 1);
+            localStorage.setItem("expenses", JSON.stringify(expensesData));
 
-                // Remove the expense from the array
-                expensesData.splice(rowIndex, 1);
+            showAlert("Expense deleted successfully", "delete-expenses"); 
 
-                // Save the updated expenses to localStorage
-                localStorage.setItem("expenses", JSON.stringify(expensesData));
+            // Update the display and total expenses after deletion
+            displayExpenses();
+        });
+    });
 
-
-                showAlert("Expense deleted successfully", "success")
-
-            });
-        })
-    })
+    // Update total expenses
+    updateTotalExpenses(expenses);
 }
 
-// function showAlert(message, type) {
-//     const alert = document.querySelector(".alert")
-//     alert.textContent = message
-//     alert.classList.remove("hidden")
-//     alert.classList.add(`alert-${type}`)
-//     setTimeout(() => {
-//         alert.classList.remove(`alert-${type}`)
-//         setTimeout(() => {
-//             alert.classList.add("hidden")
-//         }, 1000)
-//     }, 3000)
-//     if (type === "error") {
-//         alert.classList.add("alert-error")
-//     } else if (type === "success") {
-//         alert.classList.add("alert-success")
-//     }
-// }
+function updateTotalExpenses(expenses) {
+    const totalExpense = document.querySelector('#total-expenses'); 
+    let total = 0;
+    for (let i = 0; i < expenses.length; i++) {
+        total += parseFloat(expenses[i].itemAmount);
+    }
+    totalExpense.textContent = total.toFixed(2);
+}
+
+// Example of how to call displayExpenses function
+// document.addEventListener('DOMContentLoaded', displayExpenses);
+
 
 function searchExpenses() {
     const searchInput = document.getElementById('search').value.trim()
@@ -187,7 +179,7 @@ function searchExpenses() {
 
 function showAlert(message, className) {
     let divAlert = document.createElement("div")
-    divAlert.className = `alert ${className}`
+    divAlert.className = `delete-expense alert ${className}`
     divAlert.appendChild(document.createTextNode(message))
     const body = document.querySelector("body")
     const main = document.querySelector("main")
@@ -200,3 +192,4 @@ function showAlert(message, className) {
 
 
 }
+
