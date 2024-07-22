@@ -1,14 +1,16 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpendWise</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" href="/style.css" />
+
   </head>
   <body>
-    <header class="bg-slate-500 h-16 w-full">
-      <nav class="flex justify-between text-white w-full size-12">
+    <header class="bg-slate-500 h-16 w-full mt-2">
+      <nav
+        class="flex justify-between w-full max-w-[1300px] m-auto text-white size-12"
+      >
         <div class="p-3 flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,57 +24,79 @@
               d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
               clip-rule="evenodd"
             />
+
           </svg>
 
           <span class="text-lg font-bold font-barrio text-yellow-400">
-            <a href="/"> SpendWise</a></span
-          >
+            <a href="/"> SpendWise</a>
+          </span>
         </div>
         <div
-          class="mr-6 p-3 *:border *:px-1 *:py-1.5 *:rounded *:text-sm *:font-sans *:hover:opacity-100 hover:cursor-pointer"
+          class="pt-2 mr-1 hover:cursor-pointer *:border *:p-1 *:rounded *:text-xs *:font-bold *:laptop:text-sm *:font-sans *:hover:opacity-100"
         >
-          <span
-            class="bg-gray-50 border-gray-50 hover:bg-gray-100 shadow-md text-black mr-1"
+          <button
+            class="bg-gray-50 border-gray-50 hover:bg-gray-100 shadow-md text-black mr-2"
             id="log-in"
-            {{!-- ><a href="/">Home</a></span --}}
-          >
-          {{!-- <span><a href="/login">Log in</a></span> --}}
-          <span><a href="/login">Log out</a></span>
+          >Log in</button>
+
+          <button class="whitespace-nowrap">
+            <a href="/login">Log out</a>
+          </button>
         </div>
       </nav>
     </header>
     <main class="bg-gray-100">
-      <div class="max-w-[650px] m-auto mt-8 px-4">
-        <div class="flex justify-between">
+      <div class="w-full max-w-[650px] m-auto mt-8 px-4">
+        <div class="flex justify-between items-center">
           <div class="">
             <button
-              class="border bg-green-600 border-green-600 hover:bg-green-500 font-sans rounded-md text-white text-sm p-1.5 shadow"
+              class="bg-green-600 border-green-600 hover:bg-green-700 font-sans rounded-md text-white text-xs p-1.5 shadow laptop:text-sm"
               id="open-button"
             >
               Add Expense
             </button>
             <button
-              class="border bg-[#1a75cf] hover:bg-blue-500 border-[#1a75cf] font-sans rounded-md text-white text-sm p-1.5 shadow"
+              class="bg-[#1a75cf] hover:bg-blue-500 border-[#1a75cf] font-sans rounded-md text-white text-xs p-1.5 shadow laptop:text-sm"
               id="open-button"
             >
               Expense report
             </button>
           </div>
-          <div class="flex justify-between items-center gap-1">
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
             <input
-              class="block w-full border border-black p-1.5 outline-none rounded focus:border-blue-400 text-sm placeholder:italic placeholder:text-slate-400"
+              class="block w-full ps-7 border border-black p-1.5 outline-none rounded focus:border-blue-400 text-xs placeholder:italic placeholder:text-slate-400 laptop:text-sm"
               id="search"
               placeholder="Search by description or category"
               type="text"
               name="search"
             />
+
           </div>
         </div>
-        <div class="w-full max-w-[650px] mt-2">
-          <table class="border max-w-[550px] shadow">
+        <div class="max-w-[650px] mt-2">
+          <table class="border w-[55%] shadow border-red-50">
             <thead>
               <tr
-                class="text-left font-sans border *:text-slate-600 *:py-2 *:px-1.5 *:m-2 text-[14px] font-extralight"
+                class="w-full text-left font-sans border *:text-slate-500 *:py-2 *:px-0.5 *:m-2 text-[12px] laptop:text-[14px] font-extralight *:whitespace-nowrap"
               >
                 <th>Item ID</th>
                 <th>Item Name</th>
@@ -85,9 +109,10 @@
             <tbody id="item-list" class="font-sans"></tbody>
           </table>
           <div class="mt-2 text-right text-slate-600 text-sm p-1.5">
-            Total Expenses: $<span id="total-expenses" class="font-bold"
-              >0.00</span
-            >
+            Total Expenses: $<span
+              id="total-expenses"
+              class="font-bold"
+            >0.00</span>
           </div>
         </div>
       </div>
@@ -98,7 +123,7 @@
       >
         <!-- modal -->
         <div
-          class="w-full max-w-[550px] m-auto border border-white rounded p-3 bg-white"
+          class="w-full m-auto max-w-[400px] bg-white border border-white rounded p-3 xs:w-full"
           id="modal-parent"
         >
           <div
@@ -108,17 +133,15 @@
             <span
               class="text-2xl font-bold cursor-pointer text-gray-500"
               id="close-button"
-              >&times;</span
-            >
+            >&times;</span>
           </div>
           <!-- modal form -->
           <form class="*:mt-4">
             <!-- Item Name -->
 
             <div class="">
-              <label for="item-name" class="text-sm font-sans font-normal"
-                >Item name</label
-              >
+              <label for="item-name" class="text-sm font-sans font-normal">Item
+                name</label>
               <input
                 type="text"
                 id="item-name"
@@ -128,9 +151,10 @@
             </div>
             <!-- Category -->
             <div class="">
-              <label for="category" class="text-sm font-sans font-normal block"
-                >Category</label
-              >
+              <label
+                for="category"
+                class="text-sm font-sans font-normal block"
+              >Category</label>
               <select
                 name="category"
                 id="category"
@@ -145,9 +169,10 @@
             </div>
             <!-- item Amount -->
             <div class="">
-              <label for="Amount" class="text-sm font-sans font-normal"
-                >Amount</label
-              >
+              <label
+                for="Amount"
+                class="text-sm font-sans font-normal"
+              >Amount</label>
               <input
                 type="text"
                 id="item-amount"
@@ -157,9 +182,8 @@
             </div>
             <!-- Expense Date -->
             <div class="">
-              <label for="Amount" class="text-sm font-sans font-normal"
-                >Expense Date</label
-              >
+              <label for="Amount" class="text-sm font-sans font-normal">Expense
+                Date</label>
               <input
                 type="date"
                 id="expense-date"
@@ -178,6 +202,6 @@
         </div>
       </div>
     </main>
-    <script src="./script.js" ></script>
+    <script src="./script.js"></script>
   </body>
 </html>
