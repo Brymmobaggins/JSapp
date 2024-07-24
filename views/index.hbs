@@ -7,7 +7,7 @@
 
   </head>
   <body>
-    <header class="bg-slate-500 h-16 w-full mt-2">
+    <header class="bg-slate-600 h-16 w-full mt-2">
       <nav
         class="flex justify-between w-full max-w-[1300px] m-auto text-white size-12"
       >
@@ -27,7 +27,9 @@
 
           </svg>
 
-          <span class="text-lg laptop:text-2xl font-bold font-barrio text-yellow-500">
+          <span
+            class="text-lg laptop:text-2xl font-bold font-barrio text-yellow-500"
+          >
             <a href="/"> SpendWise</a>
           </span>
         </div>
@@ -45,7 +47,7 @@
         </div>
       </nav>
     </header>
-    <main class="bg-gray-100">
+    <main>
       <div class="w-full max-w-[650px] m-auto mt-8 px-4">
         <div class="flex justify-between items-center">
           <div class="">
@@ -96,7 +98,7 @@
           <table class="w-[55%] shadow">
             <thead>
               <tr
-                class="w-full max-w-[50%]: text-left font-sans border *:text-gray-600 *:py-2 *:px-0.5 *:m-2 text-xs laptop:text-[14px] font-extralight *:whitespace-nowrap"
+                class="w-full max-w-[50%]: text-left font-sans bg-white border *:text-[#797979] *:py-2 *:px-0.5 *:m-2 text-xs laptop:text-[14px] font-extralight *:whitespace-nowrap"
               >
                 <th>Item ID</th>
                 <th>Item Name</th>
@@ -108,7 +110,7 @@
             </thead>
             <tbody id="item-list" class="font-sans"></tbody>
           </table>
-          <div class="mt-2 text-right text-slate-600 text-sm p-1.5">
+          <div class="mt-2 text-right text-[#797979] text-sm p-1.5">
             Total Expenses: $<span
               id="total-expenses"
               class="font-bold"
@@ -123,7 +125,7 @@
       >
         <!-- modal -->
         <div
-          class="w-full m-auto max-w-[400px] bg-white border border-white rounded p-3 xs:w-full"
+          class="w-[400px] max-w-full mx-auto bg-white border border-white rounded p-3"
           id="modal-parent"
         >
           <div
@@ -139,7 +141,7 @@
           <form class="*:mt-4">
             <!-- Item Name -->
 
-            <div class="">
+            <div>
               <label for="item-name" class="text-sm font-sans font-normal">Item
                 name</label>
               <input
@@ -150,7 +152,7 @@
               />
             </div>
             <!-- Category -->
-            <div class="">
+            <div>
               <label
                 for="category"
                 class="text-sm font-sans font-normal block"
@@ -168,7 +170,7 @@
               </select>
             </div>
             <!-- item Amount -->
-            <div class="">
+            <div>
               <label
                 for="Amount"
                 class="text-sm font-sans font-normal"
@@ -181,7 +183,7 @@
               />
             </div>
             <!-- Expense Date -->
-            <div class="">
+            <div>
               <label for="Amount" class="text-sm font-sans font-normal">Expense
                 Date</label>
               <input
@@ -193,7 +195,7 @@
             </div>
             <div class="">
               <button
-                class="border w-full bg-green-500 hover:bg-green-400 p-1.5 font-medium"
+                class="border w-full bg-green-500 hover:bg-green-600 p-1.5 font-medium text-white"
               >
                 Save
               </button>
