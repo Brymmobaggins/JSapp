@@ -1,3 +1,5 @@
+/** @format */
+
 @import url("https://fonts.googleapis.com/css2?family=Barrio&display=swap");
 
 @tailwind base;
@@ -6,7 +8,7 @@
 
 @layer components {
   body {
-    @apply bg-gray-100 text-gray-800 m-5;
+    @apply bg-[#f4f2ee];
   }
   .btn-primary {
     @apply bg-blue-500 text-white;
@@ -14,11 +16,17 @@
   .btn-secondary {
     @apply bg-gray-500 text-white;
   }
-  .danger {
+  /* .danger {
     @apply bg-red-50 text-red-800 text-sm p-2 border;
+  } */
+  .delete-expense {
+    @apply bg-green-50 text-green-800 text-center text-xs laptop:text-sm p-1.5 border w-[15%] absolute top-[20%] right-0 m-auto rounded-md;
   }
   .success {
-    @apply bg-green-50 text-green-800 text-center sm:text-xs text-sm p-1.5 border w-[15%] absolute top-[20%] right-0 m-auto rounded-md;
+    @apply bg-red-50 text-red-800 text-xs laptop:text-sm p-2 border;
+  }
+  .rows {
+    @apply cursor-pointer whitespace-nowrap;
   }
   #modal {
     @apply hidden;
@@ -27,6 +35,6 @@
     @apply text-sm py-2 px-1.5;
   }
   #item-list tr {
-    @apply bg-[#fdfdfd] border-b border-gray-200 shadow;
+    @apply bg-white border-b border-gray-200 shadow;
   }
 }
